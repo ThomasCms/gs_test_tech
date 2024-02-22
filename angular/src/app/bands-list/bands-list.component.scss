@@ -1,0 +1,57 @@
+table thead tbody {
+  display:table;
+  width: 100%;
+}
+
+table{
+  table-layout:fixed;
+  border-collapse: collapse;
+}
+
+tr {
+  border: 1px solid black;
+}
+
+th {
+  border-right: 1px solid black;
+}
+
+.table-col1 {
+  width: 10%;
+}
+
+.table-col2 {
+  width: 10%;
+}
+
+.table-col3 {
+  width: 10%;
+}
+
+.table-col4 {
+  width: 5%;
+}
+
+.table-col5 {
+  width: 5%;
+}
+
+.table-col6 {
+  width: 10%;
+}
+
+.table-col7 {
+  width: 5%;
+}
+
+.table-col8 {
+  width: 10%;
+}
+
+.table-col9 {
+  width: 20%;
+}
+
+.table-col10 {
+  width: 10%;
+}

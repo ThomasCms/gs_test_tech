@@ -1,0 +1,103 @@
+<div>
+  <div class="submit-form">
+    <div>
+      <div class="form-group">
+        <label for="name">Nom</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="band.name"
+          name="name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="country">Pays</label>
+        <input
+          class="form-control"
+          id="country"
+          required
+          [(ngModel)]="band.country"
+          name="country"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="city">Ville</label>
+        <input
+          class="form-control"
+          id="city"
+          required
+          [(ngModel)]="band.city"
+          name="city"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="startYear">Année de début</label>
+        <input
+          class="form-control"
+          id="startYear"
+          required
+          [(ngModel)]="band.startYear"
+          name="startYear"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="endYear">Année de fin</label>
+        <input
+          class="form-control"
+          id="endYear"
+          [(ngModel)]="band.endYear"
+          name="endYear"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="founders">Fondateurs</label>
+        <input
+          class="form-control"
+          id="founders"
+          [(ngModel)]="band.founders"
+          name="founders"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="members">Membres</label>
+        <input
+          class="form-control"
+          id="members"
+          [(ngModel)]="band.members"
+          name="members"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="musicStyle">Style musical</label>
+        <input
+          class="form-control"
+          id="musicStyle"
+          [(ngModel)]="band.musicStyle"
+          name="musicStyle"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="details">Details</label>
+        <input
+          class="form-control"
+          id="details"
+          required
+          [(ngModel)]="band.details"
+          name="details"
+        />
+      </div>
+
+      <button (click)="saveBand()" class="btn btn-success">Enregistrer</button>
+    </div>
+  </div>
+</div>

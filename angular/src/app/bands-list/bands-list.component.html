@@ -1,0 +1,39 @@
+<div class="list row">
+  <div>
+    <h4>Les groupes</h4>
+
+    <table>
+      <thead>
+      <tr>
+        <th class="text-center" [ngClass]="'table-col' + (i + 1)" *ngFor="let legend of ['Nom', 'Pays', 'Ville', 'Année de début', 'Année de fin', 'Fondateurs', 'Membres', 'Style musical', 'Details', 'Actions']; index as i">{{ legend }}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr
+        *ngFor="let band of bands"
+      >
+        <th class="text-center table-col1">{{ band.name.length > 70 ? (band.name | slice:0:70) + '...' : band.name }}</th>
+        <th class="text-center table-col2">{{ band.country.length > 70 ? (band.country | slice:0:70) + '...' : band.country }}</th>
+        <th class="text-center table-col3">{{ band.city.length > 70 ? (band.city | slice:0:70) + '...' : band.city }}</th>
+        <th class="text-center table-col4">{{ band.startYear }}</th>
+        <th class="text-center table-col5">{{ band.endYear }}</th>
+        <th class="text-center table-col6">{{ band.founders !== undefined && band.founders !== null && band.founders.length > 70 ? (band.founders | slice:0:70) + '...' : band.founders }}</th>
+        <th class="text-center table-col7">{{ band.members }}</th>
+        <th class="text-center table-col8">{{ band.musicStyle !== undefined && band.musicStyle !== null && band.musicStyle.length > 70 ? (band.musicStyle | slice:0:70) + '...' : band.musicStyle }}</th>
+        <th class="text-center table-col9">{{ band.details.length > 220 ? (band.details | slice:0:220) + '...' : band.details }}</th>
+        <th class="table-col10">
+          <a [routerLink]="['/bands/update/', band.id]" [queryParams]="{id: band.id }" class="btn btn-primary btn-sm">Editer</a>
+          <a type="button" class="btn btn-danger btn-sm" (click)="deleteBand(band.id)">Supprimer</a>
+        </th>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="p-5">
+    <h3>Ajouter un groupe</h3>
+    <app-bands-add>
+    </app-bands-add>
+  </div>
+</div>
