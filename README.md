@@ -1,0 +1,8 @@
+- source bash_aliases.sh
+- touch .env.local
+- copy/paste .env contents into .env.local and replace [DATABASE_URL content](https://symfony.com/doc/6.4/doctrine.html#configuring-the-database)
+- composer install
+- symfony server:start
+- gs-sf d:d:c && gs-sf d:m:m
+- cd angular && npm install
+- ng serve --open
