@@ -78,7 +78,7 @@ class Band implements \JsonSerializable
         type: 'int',
         message: 'Your band\'s start year should be an integer'
     )]
-    private ?int $startYear = null;
+    private $startYear = null;
 
     #[ORM\Column(type: Types::SMALLINT, nullable: true)]
     #[Assert\Type(
@@ -86,7 +86,7 @@ class Band implements \JsonSerializable
         message: 'Your band\'s end year should be an integer'
     )]
     #[Assert\GreaterThanOrEqual(propertyPath: 'startYear')]
-    private ?int $endYear = null;
+    private $endYear = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Assert\Type(
@@ -111,7 +111,7 @@ class Band implements \JsonSerializable
         max: 255,
         maxMessage: 'Your band\'s members list cannot be longer than {{ limit }} characters',
     )]
-    private ?int $members = null;
+    private $members = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Assert\Type(
@@ -133,6 +133,12 @@ class Band implements \JsonSerializable
         message: 'Your band\'s details should be a string'
     )]
     private ?string $details = null;
+
+    // Setters parameters are always nullable. That's because we have no control over what's imported in xlsx.
+    // Validators are taking care we do not try to insert objects with null values in not nullable fields.
+    //
+    // startYear, endYear, members and their getter/setters are not type hinted because it would throw exceptions before
+    // validator have the occasion to do his job.
 
     public function getId(): ?int
     {
@@ -175,24 +181,24 @@ class Band implements \JsonSerializable
         return $this;
     }
 
-    public function getStartYear(): ?int
+    public function getStartYear()
     {
         return $this->startYear;
     }
 
-    public function setStartYear(?int $startYear): static
+    public function setStartYear($startYear): static
     {
         $this->startYear = $startYear;
 
         return $this;
     }
 
-    public function getEndYear(): ?int
+    public function getEndYear()
     {
         return $this->endYear;
     }
 
-    public function setEndYear(?int $endYear): static
+    public function setEndYear($endYear): static
     {
         $this->endYear = $endYear;
 
@@ -211,12 +217,12 @@ class Band implements \JsonSerializable
         return $this;
     }
 
-    public function getMembers(): ?int
+    public function getMembers()
     {
         return $this->members;
     }
 
-    public function setMembers(?int $members): static
+    public function setMembers($members): static
     {
         $this->members = $members;
 

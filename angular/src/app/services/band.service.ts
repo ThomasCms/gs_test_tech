@@ -36,4 +36,11 @@ export class BandService {
 
     return this.http.delete(`${baseUrl}/delete/${id}`);
   }
+
+  import(file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    return this.http.post(`${baseUrl}/import`, formData);
+  }
 }

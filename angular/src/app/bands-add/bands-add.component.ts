@@ -24,7 +24,9 @@ export class BandsAddComponent {
         next: () => {
           location.reload();
         },
-        error: (e) => console.error(e)
+        error: (e) => {
+          console.error(e.error);
+        }
       });
   }
 }

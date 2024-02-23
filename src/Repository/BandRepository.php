@@ -20,4 +20,20 @@ class BandRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Band::class);
     }
+
+    public function findByNames(array $names): array
+    {
+        $results = $this->createQueryBuilder('b')
+            ->where('b.name IN (:names)')
+            ->setParameter('names', $names)
+            ->getQuery()
+            ->getResult();
+
+        $bandsWithKeyAsName = [];
+        foreach ($results as $result) {
+            $bandsWithKeyAsName[$result->getName()] = $result;
+        }
+
+        return $bandsWithKeyAsName;
+    }
 }

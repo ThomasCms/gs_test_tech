@@ -14,13 +14,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BandController extends AbstractController
 {
-    #[Route('/', name: 'list', methods: ['GET'])]
+    #[Route('/', name: 'list', options: ['expose' => true], methods: ['GET'])]
     public function index(BandRepository $bandRepository): JsonResponse
     {
         return new JsonResponse($bandRepository->findAll());
     }
 
-    #[Route('/create', name: 'create', methods: ['POST'])]
+    #[Route('/create', name: 'create', options: ['expose' => true], methods: ['POST'])]
     public function create(Request $request, EntityManagerInterface $em, BandManager $bandManager): JsonResponse
     {
         $object = json_decode($request->getContent());
@@ -39,13 +39,13 @@ class BandController extends AbstractController
         return new JsonResponse('Saved new product with id ' . $band->getId());
     }
 
-    #[Route('/{id}', name: 'read', methods: ['GET'], requirements: ['id' => '\d+'])]
+    #[Route('/{id}', name: 'read', options: ['expose' => true], methods: ['GET'], requirements: ['id' => '\d+'])]
     public function read(int $id, BandManager $bandManager): JsonResponse
     {
         return new JsonResponse($bandManager->fetchAndCheckBandById($id));
     }
 
-    #[Route('/update/{id}', name: 'update', methods: ['PUT'], requirements: ['id' => '\d+'])]
+    #[Route('/update/{id}', name: 'update', options: ['expose' => true], methods: ['PUT'], requirements: ['id' => '\d+'])]
     public function update(
         int $id,
         Request $request,
@@ -65,7 +65,7 @@ class BandController extends AbstractController
         return new JsonResponse();
     }
 
-    #[Route('/delete/{id}', name: 'delete', methods: ['DELETE'], requirements: ['id' => '\d+'])]
+    #[Route('/delete/{id}', name: 'delete', options: ['expose' => true], methods: ['DELETE'], requirements: ['id' => '\d+'])]
     public function delete(int $id, BandManager $bandManager, EntityManagerInterface $em): JsonResponse
     {
         $band = $bandManager->fetchAndCheckBandById($id);

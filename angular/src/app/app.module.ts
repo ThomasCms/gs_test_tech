@@ -8,13 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { BandsListComponent } from './bands-list/bands-list.component';
 import { BandsAddComponent } from './bands-add/bands-add.component';
 import { BandsUpdateComponent } from './bands-update/bands-update.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BandsListComponent,
     BandsAddComponent,
-    BandsUpdateComponent
+    BandsUpdateComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,

@@ -27,6 +27,7 @@ class BandManager
     public function fillDataAndApplyVerifications(object $object, Band &$band): ?string
     {
         $bandProperties = ['name', 'country', 'city', 'startYear', 'details'];
+
         foreach ($bandProperties as $property) {
             if (isset($object->{$property})) {
                 $band->{"set" . ucfirst($property)}($object->{$property});
@@ -43,6 +44,11 @@ class BandManager
             }
         }
 
+        return $this->getBandErrorMessages($band);
+    }
+
+    public function getBandErrorMessages(Band $band): ?string
+    {
         $errors = $this->validator->validate($band);
 
         $errorMessage = null;
